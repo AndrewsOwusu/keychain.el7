@@ -113,7 +113,7 @@ main() {
   fi
   which curl > /dev/null 2>&1
   if [ $? = 0 ] ; then
-    url="http://ftp.nluug.nl/internet/apache/tomcat/tomcat-7/v${version}/src/${package}-${version}-src.tar.gz"
+    url="http://www.funtoo.org/distfiles/${package}/${package}-${version}.tar.bz2"
     echo "Downloading: ${url}"
     statuscode=$(curl -s -o /dev/null -w "%{http_code}\n" ${url})
     if [ $statuscode = 200 ] ; then
@@ -129,8 +129,6 @@ main() {
   fi
   chown root:root /data/${package}.spec
   yum -y groupinstall "Development Tools"
-  yum -y install  ant java-1.6.0-openjdk java-1.6.0-openjdk-devel
-  cp /data/${package}.service /data/rpmbuild/SOURCES/
   rpmbuild --define "_topdir /data/rpmbuild" -bb /data/${package}.spec
 }
 
