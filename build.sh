@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 usage() {
   echo "Usage: $0 -p PACKAGE -v VERSION -r RELEASE -d DIST"
@@ -119,7 +119,7 @@ main() {
     if [ $statuscode = 200 ] ; then
       curl -s -o /data/rpmbuild/SOURCES/${package}-${version}-src.tar.gz ${url}
     else
-      echo "Failed to download ${url}."
+      echo "Failed to download ${url}. (Errorcode: ${statuscode})"
       exit 1
     fi
   else
