@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 
 usage() {
   echo "Usage: $0 -p PACKAGE -v VERSION -r RELEASE -d DIST"
@@ -113,7 +113,7 @@ main() {
   fi
   which curl > /dev/null 2>&1
   if [ $? = 0 ] ; then
-    url="http://www.funtoo.org/distfiles/${package}/${package}-${version}.tar.bz2"
+    url="http://build.funtoo.org/distfiles/${package}/${package}-${version}.tar.bz2"
     echo "Downloading: ${url}"
     statuscode=$(curl -s -o /dev/null -w "%{http_code}\n" ${url})
     if [ $statuscode = 200 ] ; then
