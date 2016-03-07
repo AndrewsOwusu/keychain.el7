@@ -24,7 +24,7 @@ install:
 
 script:
 # Publish to Amazon S3.
-#- docker run -v $(pwd):${DIR} ${CONTAINER} /bin/sh ${DIR}/publish-s3.sh -r eu-west-1 -b keychain.el7 -k ${S3KEY} -s ${S3SECRET} -d /data/repository/
+- docker run -v $(pwd):${DIR} ${CONTAINER} /bin/sh ${DIR}/publish-s3.sh -r eu-west-1 -b keychain.el7 -k ${S3KEY} -s ${S3SECRET} -d /data/repository/
 
 notifications:
   email: false
