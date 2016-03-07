@@ -95,14 +95,10 @@ checkargs() {
 }
 
 main() {
-  if [ -f /data/rpmbuild/RPMS/x86_64/${package}-${version}-${release}.${dist}.x86_64.rpm ] ; then
-    yum -y localinstall /data/rpmbuild/RPMS/x86_64/${package}-${version}-${release}.${dist}.x86_64.rpm
-    su -p -s /bin/sh apache-tomcat -c "/opt/apache-tomcat/bin/catalina.sh start"
-    sleep 10
-    curl http://localhost:8080/
-    su -p -s /bin/sh apache-tomcat -c "/opt/apache-tomcat/bin/catalina.sh stop"
+  if [ -f /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm ] ; then
+    yum -y localinstall /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm
   else
-    echo "Package /data/rpmbuild/RPMS/x86_64/${package}-${version}-${release}.${dist}.x86_64.rpm not found."
+    echo "Package /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm not found."
     echo
     exit 1
   fi
