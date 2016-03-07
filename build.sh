@@ -129,6 +129,7 @@ main() {
   fi
   chown root:root /data/${package}.spec
   yum -y groupinstall "Development Tools"
+  find /data
   rpmbuild --define "_topdir /data/rpmbuild" -bb /data/${package}.spec
 }
 
