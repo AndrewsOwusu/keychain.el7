@@ -117,7 +117,7 @@ main() {
     echo "Downloading: ${url}"
     statuscode=$(curl -s -o /dev/null -w "%{http_code}\n" ${url})
     if [ $statuscode = 200 ] ; then
-      curl -s -o /data/rpmbuild/SOURCES/${package}-${version}-src.tar.bz2 ${url}
+      curl -s -o /data/rpmbuild/SOURCES/${package}-${version}.tar.bz2 ${url}
     else
       echo "Failed to download ${url}. (Errorcode: ${statuscode})"
       exit 1
