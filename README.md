@@ -1,6 +1,6 @@
 # keychain
 
-[![Build Status](https://travis-ci.org/robertdebock/keychain.svg?branch=master)](https://travis-ci.org/robertdebock/keychain)
+[![Build Status](https://travis-ci.org/robertdebock/keychain.el7.svg?branch=master)](https://travis-ci.org/robertdebock/keychain.el7)
 
 This repository contains a SPEC file for [KeyChain](http://www.funtoo.org/Keychain) for [CentOS 7](https://www.centos.org/), [Red Hat 7](http://www.redhat.com/) or [Fedora](https://getfedora.org/).
 
@@ -12,13 +12,6 @@ To use these packages, run:
 
 followed by:
 
-    yum install apache-tomcat
+    yum install keychain
 
-Or [have a look in the repository](http://apache-tomcat7.el7.s3-eu-west-1.amazonaws.com/index.html) and download the RPM's manually.
-    
-Optional extra packages are:
-- apache-tomcat-manager
-- apache-tomcat-ROOT
-- apache-tomcat-docs
-- apache-tomcat-examples
-- apache-tomcat-host-manager
+Or [have a look in the repository](http://keychain.el7.s3-eu-west-1.amazonaws.com/index.html) and download the RPM's manually.
