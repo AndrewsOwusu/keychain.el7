@@ -1,6 +1,6 @@
 Name: keychain
 Version: 2.8.2
-Release: 1.el7
+Release: 2.el7
 Summary: Keychain helps you to manage SSH and GPG keys in a convenient and secure manner. Download and learn how to use Keychain on your Linux, Unix or MacOS system.
 Group: Productivity
 License: Apache Software License.
@@ -20,14 +20,9 @@ Keychain helps you to manage SSH and GPG keys in a convenient and secure manner.
 %build
 
 %install
-#rm -Rf %{buildroot}
-#mkdir -p %{buildroot}/opt/%{name}
-#mkdir -p %{buildroot}/opt/%{name}/pid
-#mkdir -p %{buildroot}/opt/%{name}/webapps/
-#mkdir -p %{buildroot}/etc/systemd/system/
-#mkdir -p %{buildroot}/var/run/%{name}
-#%{__cp} -Rip ./output/build/{bin,conf,lib,logs,temp,webapps} %{buildroot}/opt/%{name}
-#%{__cp} %{_sourcedir}/%{name}.service %{buildroot}/etc/systemd/system/
+mkdir -p $RPM_BUILD_ROOT/%{_bindir} $RPM_BUILD_ROOT/%{_mandir}/man1
+install -m0755 keychain $RPM_BUILD_ROOT/%{_bindir}/keychain
+install -m0644 keychain.1 $RPM_BUILD_ROOT/%{_mandir}/man1
 
 %clean
 rm -rf %{buildroot}
@@ -47,7 +42,10 @@ case "$1" in
 esac
 
 %files
-%defattr(-,%{name},%{name},-)
+%defattr(-,root,root)
+     %{_bindir}/${name}
+%doc %{_mandir}/man1/${name}.1
+%doc ChangeLog COPYING.txt keychain.pod README.md
 
 %changelog
 * Mon Mar 7 2016 - robert (at) meinit.nl
