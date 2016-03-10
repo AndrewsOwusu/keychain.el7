@@ -127,9 +127,11 @@ main() {
     echo
     exit 2
   fi
+  cd /data/rpmbuild/BUILD
+  tar -xvjf ${package}.tar.bz2 ${package}-${version}/${package}.spec
+  cp ${package}-${version}/${package}.spec /data
   chown root:root /data/${package}.spec
   yum -y groupinstall "Development Tools"
-  find /data
   rpmbuild --define "_topdir /data/rpmbuild" -bb /data/${package}.spec
 }
 
