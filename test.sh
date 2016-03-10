@@ -9,8 +9,6 @@ usage() {
   echo "    The version of the package, like \"7.0.65\"."
   echo "  -r RELEASE"
   echo "    The release of the package, like \"1\"."
-  echo "  -d DIST"
-  echo "    The distribution tag of the package, like \"el7\"."
   exit 1
 }
 
@@ -50,17 +48,6 @@ readargs() {
           usage
         fi
       ;;
-      -d)
-        if [ "$2" ] ; then
-          dist="$2"
-          shift ; shift
-        else
-          echo "Missing a value for $1."
-          echo
-          shift
-          usage
-        fi
-      ;;
       *)
         echo "Unknown option or argument $1."
         echo
@@ -87,18 +74,13 @@ checkargs() {
     echo
     usage
   fi
-  if [ ! "${dist}" ] ; then
-    echo "Missing dist."
-    echo
-    usage
-  fi
 }
 
 main() {
-  if [ -f /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm ] ; then
-    yum -y localinstall /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm
+  if [ -f /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.noarch.rpm ] ; then
+    yum -y localinstall /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.noarch.rpm
   else
-    echo "Package /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.${dist}.noarch.rpm not found."
+    echo "Package /data/rpmbuild/RPMS/noarch/${package}-${version}-${release}.noarch.rpm not found."
     echo
     exit 1
   fi
