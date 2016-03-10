@@ -128,7 +128,7 @@ main() {
     exit 2
   fi
   cd /data/rpmbuild/BUILD
-  tar -xvjf ${package}.tar.bz2 ${package}-${version}/${package}.spec
+  tar -xvjf ${package}-${version}.tar.bz2 ${package}-${version}/${package}.spec
   cp ${package}-${version}/${package}.spec /data
   chown root:root /data/${package}.spec
   yum -y groupinstall "Development Tools"
